@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: <%= ENV.fetch('PGUSER', 'postgres') %>
+  password: <%= ENV.fetch('PGPASSWORD', '') %>
+  host: <%= ENV.fetch('PGHOST', 'localhost') %>
+
+development:
+  <<: *default
+  database: banking_dashboard_auth_dev
+
+test:
+  <<: *default
+  database: banking_dashboard_auth_test
+
+production:
+  <<: *default
+  database: banking_dashboard_auth_prod
